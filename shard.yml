@@ -1,0 +1,9 @@
+name: diamond
+version: 0.1.0
+
+authors:
+  - hudson-newey <grathiumindustries@gmail.com>
+
+crystal: '>= 1.13.1'
+
+license: MIT
