@@ -36,7 +36,7 @@ class Diamond_Server
   end
 
   def start
-    address = @server.bind_tcp port
+    address = @server.bind_tcp @port
     puts "Website Started at http://#{address}/"
 
     @server.listen
