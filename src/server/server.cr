@@ -11,7 +11,7 @@ class DiamondServer
   def initialize(@router : Router, @port : Int32 = 3000)
     @routes = @router.@routes
 
-    server = HTTP::Server.new do |context|
+    @server = HTTP::Server.new do |context|
       context.response.content_type = "text/html"
 
       activated_route = context.request.path
