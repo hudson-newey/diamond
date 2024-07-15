@@ -8,14 +8,15 @@ class DiamondServer
   @router : Router
   @routes : Hash(String, Controller)
 
-  def initialize(@router: Router, @port : Int32 = 3000)
+  def initialize(@router : Router, @port : Int32 = 3000)
     @routes = @router.@routes
 
     server = HTTP::Server.new do |context|
       context.response.content_type = "text/html"
 
       activated_route = context.request.path
-      virtual_route = 404 if !routes.has_key?(activated_route) else activated_route
+      virtual_route = activated_route
+      virtual_route = 404 if !routes.has_key?(activated_route)
       puts "#{activated_route} -> #{virtual_route}"
 
       page_controller = routes[virtual_route]
