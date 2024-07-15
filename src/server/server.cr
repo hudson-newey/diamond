@@ -2,7 +2,7 @@ require "http/server"
 require "../router/router"
 require "../controller/controller"
 
-class DiamondServer
+class Diamond_Server
   @port : Int32
   @server : HTTP::Server
   @router : Router
@@ -16,10 +16,10 @@ class DiamondServer
 
       activated_route = context.request.path
       virtual_route = activated_route
-      virtual_route = 404 if !routes.has_key?(activated_route)
+      virtual_route = 404 if !@routes.has_key?(activated_route)
       puts "#{activated_route} -> #{virtual_route}"
 
-      page_controller = routes[virtual_route]
+      page_controller = @routes[virtual_route]
 
       if context.request.method == "GET"
         context.response.print page_controller.get(context)
